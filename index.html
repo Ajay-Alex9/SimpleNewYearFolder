@@ -10,15 +10,7 @@
             font-family: 'Arial', sans-serif;
             overflow: hidden;
             color: white;
-            background: linear-gradient(45deg, #ff0000, #ff7300, #fffb00, #48ff00, #00ffd5, #002bff, #7a00ff, #ff00b5);
-            background-size: 800% 800%;
-            animation: gradientAnimation 10s ease infinite;
-        }
-
-        @keyframes gradientAnimation {
-            0% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
-            100% { background-position: 0% 50%; }
+            background: black;
         }
 
         .message {
@@ -53,6 +45,71 @@
             pointer-events: none;
             z-index: 5;
         }
+
+        .flashing-lights {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            z-index: 1;
+            animation: flash 1s infinite;
+        }
+
+        @keyframes flash {
+            0% { background: rgba(255, 0, 0, 0.5); }
+            25% { background: rgba(0, 255, 0, 0.5); }
+            50% { background: rgba(0, 0, 255, 0.5); }
+            75% { background: rgba(255, 255, 0, 0.5); }
+            100% { background: rgba(255, 0, 255, 0.5); }
+        }
+
+        .image-container {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            z-index: 2;
+            pointer-events: none;
+        }
+
+        .image {
+            position: absolute;
+            width: 150px;
+            animation: float 5s infinite;
+        }
+
+        @keyframes float {
+            0% { transform: translateY(0); }
+            50% { transform: translateY(-20px); }
+            100% { transform: translateY(0); }
+        }
+
+        .image:nth-child(1) {
+            left: 10%;
+            animation-delay: 0s;
+        }
+
+        .image:nth-child(2) {
+            left: 30%;
+            animation-delay: 1s;
+        }
+
+        .image:nth-child(3) {
+            left: 50%;
+            animation-delay: 2s;
+        }
+
+        .image:nth-child(4) {
+            left: 70%;
+            animation-delay: 3s;
+        }
+
+        .image:nth-child(5) {
+            left: 90%;
+            animation-delay: 4s;
+        }
     </style>
 </head>
 <body>
@@ -62,6 +119,14 @@
         </div>
     </div>
     <div class="confetti-container" id="confetti-container"></div>
+    <div class="flashing-lights"></div>
+    <div class="image-container">
+        <img src="https://example.com/image1.png" class="image" alt="New Year Image 1">
+        <img src="https://example.com/image2.png" class="image" alt="New Year Image 2">
+        <img src="https://example.com/image3.png" class="image" alt="New Year Image 3">
+        <img src="https://example.com/image4.png" class="image" alt="New Year Image 4">
+        <img src="https://example.com/image5.png" class="image" alt="New Year Image 5">
+    </div>
     <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.4.0/dist/confetti.browser.min.js"></script>
     <script>
         // Function to get URL parameters
