@@ -27,8 +27,24 @@
     </style>
 </head>
 <body>
-    <div class="message">
+    <div class="message" id="message">
         🎉 Happy New Year 2025! 🎉
     </div>
+    <script>
+        // Function to get URL parameters
+        function getUrlParameter(name) {
+            name = name.replace(/[\[]/, '\\[').replace(/[\]]/, '\\]');
+            var regex = new RegExp('[\\?&]' + name + '=([^&#]*)');
+            var results = regex.exec(location.search);
+            return results === null ? '' : decodeURIComponent(results[1].replace(/\+/g, ' '));
+        }
+
+        // Capture the name from URL parameters
+        var userName = getUrlParameter('name');
+        if (userName) {
+            var messageElement = document.getElementById('message');
+            messageElement.innerHTML = `🎉 Happy New Year 2025, ${userName}! 🎉`;
+        }
+    </script>
 </body>
 </html>
